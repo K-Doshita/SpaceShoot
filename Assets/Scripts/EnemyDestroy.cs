@@ -85,7 +85,7 @@ public class EnemyDestroy : MonoBehaviour
         await Task.Delay(TimeSpan.FromSeconds(1.2));
 
         Destroy(explosionPrefab);
-        Destroy(gameObject);
+        Destroy(this);
 
     }
 
@@ -98,7 +98,7 @@ public class EnemyDestroy : MonoBehaviour
 
         await Task.Delay(TimeSpan.FromSeconds(1.2f));
 
-        Destroy(gameObject);
+        Destroy(this);
 
     }
 }

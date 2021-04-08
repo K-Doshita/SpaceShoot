@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 public class CountdownTimer : MonoBehaviour
 {
     
-    public GameObject countdownCanvas;
+    public GameObject countdownTextObject;
 
     public Text countdownText;
 
-    private int countdownNum;
+    private int? countdownNum;
 
 
     // Start is called before the first frame update
@@ -30,16 +30,14 @@ public class CountdownTimer : MonoBehaviour
     {
 
         countdownText = countdownText.GetComponent<Text>();
-        
+
+        countdownNum = null;
         countdownNum = 3;
         countdownText.text = countdownNum.ToString();
 
-        //countdownCanvas.SetActive(true);
-        //StartCoroutine("CountdownInter");
         while(countdownNum > 1)
         {
             await Task.Delay(TimeSpan.FromSeconds(1));
-            Debug.Log(countdownNum);
 
 
             --countdownNum;
@@ -49,7 +47,7 @@ public class CountdownTimer : MonoBehaviour
         await Task.Delay(TimeSpan.FromSeconds(1));
         countdownText.text = null;
 
-        countdownCanvas.SetActive(false);
+        countdownTextObject.SetActive(false);
         Time.timeScale = 1f;
     }
 

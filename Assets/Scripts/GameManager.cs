@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject pauseCanvas;
-
-    public GameObject countdownCanvas;
-
-    public CountdownTimer countdownTimer;
 
     public GameObject enemyPrefab;
     
@@ -38,15 +33,5 @@ public class GameManager : MonoBehaviour
         float z = Random.Range(20, 30);
 
         return new Vector3(x, y, z);
-    }
-
-
-    public void ReturnGame()
-    {
-        pauseCanvas.SetActive(false);
-
-        countdownCanvas.SetActive(true);
-
-        countdownTimer.Countdown();
     }
 }

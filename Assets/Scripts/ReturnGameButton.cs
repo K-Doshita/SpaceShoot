@@ -5,7 +5,11 @@ using UnityEngine.UI;
 
 public class ReturnGameButton : MonoBehaviour
 {
-    public GameManager gameManager;
+    public GameObject pauseCanvas;
+
+    public GameObject countdownText;
+
+    public CountdownTimer countdownTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +26,11 @@ public class ReturnGameButton : MonoBehaviour
 
     public void OnClick_ReturnGameButton()
     {
-        gameManager.ReturnGame();
+        pauseCanvas.SetActive(false);
+
+        countdownText.SetActive(true);
+
+        countdownTimer.Countdown();
 
     }
 

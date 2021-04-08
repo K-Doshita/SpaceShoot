@@ -6,18 +6,22 @@ public class CameraGyro : MonoBehaviour
 {
     private Quaternion gyro;
 
+    private Quaternion startGyro;
     // Start is called before the first frame update
     void Start()
     {
         Input.gyro.enabled = true;
-        //this.transform.localRotation = Quaternion.Euler(90, 0, 0);
+        startGyro = StartRotaion.ini_gyro;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.gyro = Input.gyro.attitude;
+        gyro = Input.gyro.attitude;
 
-        this.transform.localRotation = Quaternion.Euler(90, 0, 0) * (new Quaternion(-gyro.x, -gyro.y, gyro.z, gyro.w));
+        gyro = Quaternion.Euler(90, 0, 0) * new Quaternion(-gyro.x, -gyro.y, gyro.z, gyro.w);
+
+        this.transform.localRotation = Quaternion.Euler(0, -startGyro.y, 0) * gyro;
     }
 }

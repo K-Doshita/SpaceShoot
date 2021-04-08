@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
@@ -11,6 +9,8 @@ public class PlayerLife : MonoBehaviour
 {
     public int playerLife = 5;
 
+    [SerializeField]
+    private GameObject damagePanel;
     private GameObject lifeCounter;
     private Text lifeCounterText;
     private new Collider collider;
@@ -36,10 +36,14 @@ public class PlayerLife : MonoBehaviour
     {
         if (other.gameObject.CompareTag("enemy"))
         {
+            damagePanel.SetActive(true);
+            await Task.Delay(TimeSpan.FromSeconds(0.05f));
+
             if(playerLife > 1)
             {
                 playerLife--;
                 lifeCounterText.text = "LIFE × " + playerLife;
+                damagePanel.SetActive(false);
             }
             else if (playerLife <= 1)
             {
