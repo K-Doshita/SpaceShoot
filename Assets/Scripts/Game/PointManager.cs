@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class PointManager : MonoBehaviour
 {
-    [SerializeField]
-    public int currentPoint;
+    public static int currentPoint;
 
     public Text pointText;
 
@@ -34,5 +33,11 @@ public class PointManager : MonoBehaviour
         {
             pointText.text = "POINT\n" + currentPoint;
         }
+    }
+
+
+    public static int GetTotalPoint()
+    {
+        return currentPoint;
     }
 }

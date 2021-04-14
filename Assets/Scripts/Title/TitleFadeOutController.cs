@@ -10,7 +10,7 @@ public class TitleFadeOutController : MonoBehaviour
     private Image fadeImage;
 
 
-    private float fadeSpeed = 0.05f;
+    private float fadeSpeed = 0.2f;
     [SerializeField]
     private float red, green, blue, alpha;
 

@@ -21,6 +21,8 @@ public class StarCanvasController : MonoBehaviour
 
     [SerializeField]
     private StartRotaion startRotaion;
+    [SerializeField]
+    private StartRaycast startRaycast;
 
     private Vector3 scale;
 
@@ -28,12 +30,15 @@ public class StarCanvasController : MonoBehaviour
 
     private bool firstClick;
 
+    public GameObject startSphere;
+
     // Start is called before the first frame update
     void Start()
     {
         backGroundTransform = backGroundTransform.GetComponent<Transform>();
 
         startRotaion = startRotaion.GetComponent<StartRotaion>();
+        startRaycast = startRaycast.GetComponent<StartRaycast>();
 
         scale = backGroundTransform.transform.localScale;
 
@@ -99,6 +104,9 @@ public class StarCanvasController : MonoBehaviour
         if (firstClick == false)
         {
             firstClick = true;
+
+            await Task.Delay(TimeSpan.FromSeconds(0.1f));
+
             FadeInBackGround();
         }
         else if (firstClick == true)
@@ -107,7 +115,10 @@ public class StarCanvasController : MonoBehaviour
             backGround.SetActive(false);
             startButton.SetActive(false);
 
-            startRotaion.StartCalibration();
+            startRotaion.enabled = true;
+            startRaycast.enabled = true;
+
+            startSphere.SetActive(true);
         }
     }
 

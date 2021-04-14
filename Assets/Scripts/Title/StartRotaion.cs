@@ -12,8 +12,8 @@ public class StartRotaion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        calibrationUI.SetActive(false);
-        Input.gyro.enabled = false;
+        calibrationUI.SetActive(true);
+        Input.gyro.enabled = true;
     }
 
     // Update is called once per frame
@@ -24,12 +24,6 @@ public class StartRotaion : MonoBehaviour
             ini_gyro = Input.gyro.attitude;
             this.transform.localRotation = Quaternion.Euler(90, 0, 0) * (new Quaternion(-ini_gyro.x, -ini_gyro.y, ini_gyro.z, ini_gyro.w));
         }
-    }
-
-    public void StartCalibration()
-    {
-        calibrationUI.SetActive(true);
-        Input.gyro.enabled = true;
     }
 
 }
