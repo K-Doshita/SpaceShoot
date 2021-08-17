@@ -1,15 +1,12 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ResultFadeInController : MonoBehaviour
 {
-    private float fadespeed = 0.01f;
-    private float red, green, blue, alpha;
+    public bool fadeInStarted;
 
-    public bool isFadeIn = true;
-
+    [SerializeField]
     private Image fadeImage;
 
     [SerializeField]
@@ -19,47 +16,31 @@ public class ResultFadeInController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
         fadeImage = GetComponent<Image>();
-
-        red = fadeImage.color.r;
-        green = fadeImage.color.g;
-        blue = fadeImage.color.b;
-        alpha = fadeImage.color.a;
-
+        fadeInStarted = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isFadeIn)
+        if (fadeInStarted)
         {
-            StartFadeIn();
+            fadeInStarted = false;
+            StartCoroutine(StartFadeIn());
         }
     }
 
-    /// <summary>
-    /// ImageのAlpha値を徐々に下げてフェードを実施
-    /// </summary>
-    void StartFadeIn()
+
+    private IEnumerator StartFadeIn()
     {
 
-        alpha -= fadespeed;
-        SetAlpha();
-
-        if (alpha <= 0)
+        for (int i = 100; i >= 0; i--)
         {
-            isFadeIn = false;
-            fadeImage.enabled = false;
-            resultSceneManager.ResultTextBoxDown();
+            fadeImage.color = new Color(0, 0, 0, fadeImage.color.a - 0.01f);
+            yield return null;
         }
-    }
 
-    /// <summary>
-    /// alpha値をImageに反映
-    /// </summary>
-    void SetAlpha()
-    {
-        fadeImage.color = new Color(red, green, blue, alpha);
+        fadeImage.enabled = false;
+        resultSceneManager.ResultTextBoxDown();
     }
 }

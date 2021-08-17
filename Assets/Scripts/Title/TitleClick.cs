@@ -15,7 +15,7 @@ public class TitleClick : MonoBehaviour
     private Text dotText;
 
     [SerializeField]
-    private StarCanvasController starCanvasController;
+    private StartCanvasController starCanvasController;
 
     private float fadeSpeed = 0.1f;
 

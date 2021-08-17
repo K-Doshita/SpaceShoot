@@ -1,62 +1,46 @@
 ﻿using UnityEngine.UI;
 using UnityEngine;
-using System;
-using System.Threading.Tasks;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class TitleFadeOutController : MonoBehaviour
 {
-    
+
+    [SerializeField]
     private Image fadeImage;
 
+    public bool fadeoutStarted;
 
-    private float fadeSpeed = 0.2f;
-    [SerializeField]
-    private float red, green, blue, alpha;
 
     // Start is called before the first frame update
     void Start()
     {
-        fadeImage = GetComponent<Image>();
-        red = fadeImage.color.r;
-        green = fadeImage.color.g;
-        blue = fadeImage.color.b;
-        alpha = fadeImage.color.a;
-
-        fadeImage.enabled = false;
+        fadeoutStarted = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (fadeoutStarted)
+        {
+            fadeoutStarted = false;
+            StartCoroutine(StartFadeOut());
+        }
     }
 
-    public async void StartFade()
+    private IEnumerator StartFadeOut()
     {
-        fadeImage.enabled = true;
-
-        while (alpha <= 1)
+        for (int i = 0; i <= 5; i++)
         {
-
-            alpha += fadeSpeed;
-            SetAlpha();
-
-            await Task.Delay(TimeSpan.FromMilliseconds(1.0f));
+            fadeImage.color = new Color(0, 0, 0, fadeImage.color.a + 0.2f);
+            yield return null;
         }
-
 
         LoadScene();
     }
 
-    private void SetAlpha()
+    private void LoadScene()
     {
-        fadeImage.color = new Color(red, green, blue, alpha);
-    }
-
-    private async void LoadScene()
-    {
-        await Task.Delay(TimeSpan.FromSeconds(1.0f));
         SceneManager.LoadScene("GameScene");
     }
 }

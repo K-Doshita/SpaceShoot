@@ -865,6 +865,7 @@ GameObject:
   - component: {fileID: 883160073}
   - component: {fileID: 883160072}
   - component: {fileID: 883160074}
+  - component: {fileID: 883160075}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -904,7 +905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -938,10 +939,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7bd0ac96a51a294c8c5c384106b5771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  red: 0
-  green: 0
-  blue: 0
-  alpha: 0
+  fadeImage: {fileID: 883160072}
+  fadeoutStarted: 0
+--- !u!114 &883160075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883160070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcd54c325726e644baab02f9cbe1215d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeInStarted: 0
+  fadeImage: {fileID: 883160072}
 --- !u!1 &971642823
 GameObject:
   m_ObjectHideFlags: 0
@@ -1430,6 +1443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startCanvas: {fileID: 2491303453336856440}
   titleFadeOutController: {fileID: 883160074}
+  startRaycast: {fileID: 534669907}
   onSphere: 0
 --- !u!114 &1657565310
 MonoBehaviour:
@@ -1694,6 +1708,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startCanvas: {fileID: 2491303453336856440}
   titleFadeOutController: {fileID: 883160074}
+  startRaycast: {fileID: 534669907}
   onSphere: 0
 --- !u!1 &1871412148
 GameObject:

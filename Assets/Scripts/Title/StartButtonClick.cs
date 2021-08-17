@@ -10,24 +10,28 @@ public class StartButtonClick : MonoBehaviour
     [SerializeField]
     private TitleFadeOutController titleFadeOutController;
 
-    private StarCanvasController starCanvasController;
+    [SerializeField]
+    private StartRaycast startRaycast;
+
+    private StartCanvasController starCanvasController;
 
     public bool onSphere;
 
     // Start is called before the first frame update
     void Start()
     {
-        starCanvasController = startCanvas.GetComponent<StarCanvasController>();
+        starCanvasController = startCanvas.GetComponent<StartCanvasController>();
         titleFadeOutController = titleFadeOutController.GetComponent<TitleFadeOutController>();
+        startRaycast = startRaycast.GetComponent<StartRaycast>();
     }
 
     public void OnClick_StartButton()
     {
         if (onSphere == true)
         {
-            titleFadeOutController.StartFade();
+            titleFadeOutController.fadeoutStarted = true;
         }
-        else
+        else if(onSphere == false && startRaycast.enabled == false)
         {
             starCanvasController.FadeOutBackGround();
         }

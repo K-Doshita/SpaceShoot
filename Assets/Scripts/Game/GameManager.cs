@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,13 +8,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("InstantiateEnemy", 1f, 3f);
+        InvokeRepeating("InstantiateEnemy", 3f, 5f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void InstantiateEnemy()

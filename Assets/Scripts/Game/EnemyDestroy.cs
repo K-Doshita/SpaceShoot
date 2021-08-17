@@ -20,6 +20,7 @@ public class EnemyDestroy : MonoBehaviour
 
     private Animator fadeAnim;
 
+    [SerializeField]
     private AudioSource destroyAudio;
 
 
@@ -43,7 +44,7 @@ public class EnemyDestroy : MonoBehaviour
 
         fadeAnim = GetComponent<Animator>();
 
-        destroyAudio = GetComponent<AudioSource>();
+        //destroyAudio = GetComponent<AudioSource>();
     }
 
     private void GetAllChildObject()
@@ -85,7 +86,7 @@ public class EnemyDestroy : MonoBehaviour
         await Task.Delay(TimeSpan.FromSeconds(1.2));
 
         Destroy(explosionPrefab);
-        Destroy(this);
+        Destroy(this.gameObject);
 
     }
 
@@ -98,7 +99,7 @@ public class EnemyDestroy : MonoBehaviour
 
         await Task.Delay(TimeSpan.FromSeconds(1.2f));
 
-        Destroy(this);
+        Destroy(this.gameObject);
 
     }
 }

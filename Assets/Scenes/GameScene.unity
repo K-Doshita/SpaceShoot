@@ -124,13 +124,15 @@ GameObject:
   - component: {fileID: 240123742}
   - component: {fileID: 240123744}
   - component: {fileID: 240123743}
+  - component: {fileID: 240123745}
+  - component: {fileID: 240123746}
   m_Layer: 5
   m_Name: FadeImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &240123742
 RectTransform:
   m_ObjectHideFlags: 0
@@ -185,6 +187,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 240123741}
   m_CullTransparentMesh: 0
+--- !u!114 &240123745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240123741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b450a2dd92704dc4aab9159faaa770c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeInStarted: 0
+  fadeImage: {fileID: 240123743}
+--- !u!114 &240123746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240123741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d475b34b3a49c34583cd1a62532256c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeImage: {fileID: 240123743}
+  fadeoutStarted: 0
 --- !u!1 &347049720
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,6 +623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLife: 5
+  gameFadeOutController: {fileID: 240123746}
   damagePanel: {fileID: 949261733}
 --- !u!1 &682309116
 GameObject:
@@ -1064,7 +1095,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd8e60dcf8c5e81459b455e0efd68153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPoint: 0
   pointText: {fileID: 1038802126}
 --- !u!114 &1038802126
 MonoBehaviour:
@@ -2036,10 +2066,11 @@ AudioSource:
   m_GameObject: {fileID: 2019672221}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243915026570674996, guid: 776a5f15cc789e2458c1bff799c79c6a,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: c5229badfde4674458aad01538686b3f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.25
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using System;
 using System.Threading.Tasks;
 
@@ -9,6 +8,8 @@ public class PlayerLife : MonoBehaviour
 {
     public int playerLife = 5;
 
+    [SerializeField]
+    private GameFadeOutController gameFadeOutController;
     [SerializeField]
     private GameObject damagePanel;
     private GameObject lifeCounter;
@@ -29,7 +30,7 @@ public class PlayerLife : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private async void OnTriggerEnter(Collider other)
@@ -39,17 +40,17 @@ public class PlayerLife : MonoBehaviour
             damagePanel.SetActive(true);
             await Task.Delay(TimeSpan.FromSeconds(0.05f));
 
-            if(playerLife > 1)
+            playerLife--;
+            lifeCounterText.text = "LIFE × " + playerLife;
+
+            if (playerLife > 0)
             {
-                playerLife--;
-                lifeCounterText.text = "LIFE × " + playerLife;
                 damagePanel.SetActive(false);
             }
-            else if (playerLife <= 1)
+            else if (playerLife <= 0)
             {
                 Time.timeScale = 0f;
-                await Task.Delay(TimeSpan.FromSeconds(1.2f));
-                SceneManager.LoadScene("ResultScene");
+                gameFadeOutController.fadeoutStarted = true;
             }
         }
     }
